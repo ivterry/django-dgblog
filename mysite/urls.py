@@ -13,9 +13,10 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls),  # see https://stackoverflow.com/questions/19919547/where-can-i-find-the-source-file-of-admin-site-urls   
+    url(r'', include('blog.urls')),  #  redirects everything coming to localhost to blog.urls (i.e. /djangogirls/blog/urls.py) and look for further instructions there
 ]
